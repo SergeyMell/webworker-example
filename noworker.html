@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Initial animation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="circle">
+    <div class="inner"></div>
+</div>
+
+<div id="data" class="calc">
+</div>
+
+<script>
+
+    function appendData(data) {
+        const p = document.createElement('p');
+        p.innerText = data;
+
+        const div = document.getElementById('data');
+        div.appendChild(p);
+
+        if (div.children.length > 10) {
+            document.querySelector('p').remove();
+        }
+    }
+
+    setInterval(function () {
+        let sum = 0;
+        for (let i = 0; i < 100000; i++) {
+            sum += eval('Math.sqrt(Math.sqrt(i)) * Math.random()');
+        }
+        appendData(sum);
+    }, 100);
+
+</script>
+
+</body>
+</html>
